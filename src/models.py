@@ -17,3 +17,21 @@ class User(db.Model):
             "email": self.email,
             # do not serialize the password, its a security breach
         }
+
+class Planets (db.Model):
+    id =db.Column(db.Integer ,primary_key=True)
+    name = db.Column(db.String(120), unique=True, nullable=False)
+    gravity = db.Column(db.Integer, unique=False, nullable=False)
+    rotation_period = db.Column(db.Integer, unique=False, nullable=False)   
+    orbital_period =  db.Column(db.Integer, unique=False, nullable=False) 
+    population = db.Column(db.Integer, unique=False, nullable=False)
+    def serialize(self):
+        return {
+            "id" :self.id,
+            "name":self.name,
+            "gravity":self.gravity,
+            "rotation_period": self.rotation_period,
+            "orbital_period" : self.orbital_period,
+            "population" : self.population,
+        }       
+
